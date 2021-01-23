@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { useState } from 'react'
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 import { SELECT_OPTIONS } from '../consts'
@@ -9,7 +10,9 @@ const CostPerChart = ({ data }) => {
   const handleSelection = e => setSelection(e.target.value)
 
   const chartData = createChartData(data, selection)
-    .map(dataElement => ({ date: }))
+    .map(dataElement => (
+      { date: moment(dataElement.date).format('l'), cost: parseFloat(dataElement.cost).toFixed(2) }
+    ))
 
   const selectionOptions = [SELECT_OPTIONS.cpm, SELECT_OPTIONS.cpc, SELECT_OPTIONS.costPerConversion]
   return (
