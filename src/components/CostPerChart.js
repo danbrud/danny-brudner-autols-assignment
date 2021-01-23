@@ -1,38 +1,23 @@
-import moment from 'moment'
-import React, { useState } from 'react'
-import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts'
-import { SELECT_OPTIONS } from '../consts'
-import { createChartData } from '../utils/createChartData'
+import React from 'react'
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { toProperCase } from '../utils/utils'
 import CustomizedAxisTicks from './CustoizedAxisTicks'
 
-const CostPerChart = ({ data }) => {
-  const [selection, setSelection] = useState(SELECT_OPTIONS.cpm)
+const CostPerChart = ({ data, selection, dataKey, createChart }) => {
+  const chartData = createChart(data, selection)
 
-  const handleSelection = e => setSelection(e.target.value)
-
-  const chartData = createChartData(data, selection)
-    .map(dataElement => (
-      { date: moment(dataElement.date).format('l'), cost: parseFloat(dataElement.cost).toFixed(2) }
-    ))
-
-  const selectionOptions = [SELECT_OPTIONS.cpm, SELECT_OPTIONS.cpc, SELECT_OPTIONS.costPerConversion]
   return (
-    <div id="sales-by" className="chart">
-      <h5>View By:</h5>
-      <select id="sales-by-selection" value={selection} onChange={handleSelection}>
-        {
-          selectionOptions.map((selection, i) => (
-            <option key={i} value={selection.value}>{selection.name}</option>
-          ))
-        }
-      </select>
-      <BarChart width={700} height={250} data={chartData}>
-        <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='date' tick={<CustomizedAxisTicks />} height={60} />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey='cost' fill='#955196' />
-      </BarChart>
+    <div className='chart'>
+      <h3>{toProperCase(dataKey).toUpperCase()}</h3>
+      <ResponsiveContainer width='80%' height={250}>
+        <BarChart data={chartData}>
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey='date' tick={<CustomizedAxisTicks />} height={60} />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey={dataKey} fill='#27B6F5' />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   )
 }
