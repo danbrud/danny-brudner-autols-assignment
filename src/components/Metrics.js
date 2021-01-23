@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { SELECT_OPTIONS } from '../consts'
-import { toProperCase } from '../utils/utils'
+import { CHART_TITLES, SELECT_OPTIONS } from '../consts'
 import dataSet from '../data.json'
 import CostPerChart from './CostPerChart'
 import SelectDropdown from './SelectDropdown'
@@ -22,7 +21,7 @@ const Metrics = () => {
       <CostPerChart
         data={data}
         selection={selection}
-        dataKey={'cost'}
+        dataKey={CHART_TITLES.cost}
         createChart={createCostBySelectionChart}
       />
       <CostPerChart

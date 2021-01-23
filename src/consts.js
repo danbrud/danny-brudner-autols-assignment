@@ -3,3 +3,7 @@ export const SELECT_OPTIONS = {
   cpc: { name: 'CPC', value: 'clicks' },
   costPerConversion: { name: 'Cost Per Conversion', value: 'conversions' }
 }
+
+export const CHART_TITLES = {
+  cost: 'cost'
+}
