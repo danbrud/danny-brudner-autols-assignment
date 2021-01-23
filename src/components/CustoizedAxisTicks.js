@@ -1,4 +1,6 @@
-const CustomizedAxisTick = ({ x, y, stroke, payload }) => {
+import React from 'react'
+
+const CustomizedAxisTicks = ({ x, y, payload }) => {
 
 
   return (
@@ -9,3 +11,5 @@ const CustomizedAxisTick = ({ x, y, stroke, payload }) => {
     </g>
   )
 }
+
+export default CustomizedAxisTicks

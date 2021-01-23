@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 import { SELECT_OPTIONS } from '../consts'
 import { createChartData } from '../utils/createChartData'
+import CustomizedAxisTicks from './CustoizedAxisTicks'
 
 const CostPerChart = ({ data }) => {
   const [selection, setSelection] = useState(SELECT_OPTIONS.cpm)
@@ -27,10 +28,9 @@ const CostPerChart = ({ data }) => {
       </select>
       <BarChart width={700} height={250} data={chartData}>
         <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='date' />
+        <XAxis dataKey='date' tick={<CustomizedAxisTicks />} height={60} />
         <YAxis />
         <Tooltip />
-        <Legend />
         <Bar dataKey='cost' fill='#955196' />
       </BarChart>
     </div>
