@@ -1,10 +1,11 @@
 import React from 'react'
-import './App.css'
+import Metrics from './components/Metrics'
+import './styles/App.css'
 
 const App = () => {
   return (
     <div className="App">
-
+      <Metrics />
     </div>
   )
 }
