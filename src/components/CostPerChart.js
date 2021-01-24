@@ -1,6 +1,6 @@
 import React from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { CHART_TITLES, SELECT_OPTIONS } from '../consts'
+import { CHART_TITLES } from '../consts'
 import { toProperCase } from '../utils/utils'
 import CustomizedAxisTicks from './CustoizedAxisTicks'
 
